@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Loud or Not</title>
+    <style>
+      body {
+          background-color: #00FF00;
+          color: white;
+          -webkit-transition: background-color 200ms linear;
+          -moz-transition: background-color 200ms linear;
+          -o-transition: background-color 200ms linear;
+          -ms-transition: background-color 200ms linear;
+          transition: background-color 200ms linear;
+      }
+      
+      #yes {
+        opacity : 0;
+        -webkit-transition: opacity 200ms linear;
+        -moz-transition: opacity 200ms linear;
+        -o-transition: opacity 200ms linear;
+        -ms-transition: opacity 200ms linear;
+        transition: opacity 200ms linear;
+      }
+
+      #plot {
+        background-color: yellow;
+        height: 300px;
+        width: 100%;
+      }
+
+      #message {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      h1 {
+        position: relative;
+        top: 30%;
+        transform: translateY(-30%);
+        text-align: center;
+        color: black;
+        font-family: sans-serif;
+      }
+
+      h1 span {
+        display: block;
+        text-align: center;
+      }
+
+      #meter {
+        width: 1px;
+        height: 130px;
+        visibility: hidden;
+      }
+
+    </style>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Include the volume meter component -->
+    <script src="volume-meter.js"></script>
+    <!-- Include the main app logic -->
+    <script src="main.js"></script>
+  </head>
+
+  <body style="height: 100%">
+    <div style="height: 100%">
+      <h1>Are you a loud talker?
+        <span id="yes">
+          Yes!
+        </span>
+      </h1>
+
+    </div>
+
+    <canvas id="meter"></canvas>
+  </body>
+</html>
