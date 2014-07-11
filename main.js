@@ -120,11 +120,15 @@ function draw() {
   analyser.getByteFrequencyData(freqData);
   var average = getAverageVolume(freqData);
 
+  var multiplier = 1.9;
+  average *= multiplier;
+
   canvasContext.fillStyle = gradient;
 
-  var increment =  130 / 130 * 1.4;
+  var increment =  130 / 130;
   var y = increment * (130-average);
 
+  console.log("average", average)
   var p = canvasContext.getImageData(0, y, 1, 1).data;
 
   var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
