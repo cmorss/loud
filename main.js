@@ -122,7 +122,7 @@ function draw() {
 
   canvasContext.fillStyle = gradient;
 
-  var increment =  130 / 130;
+  var increment =  130 / 130 * 1.4;
   var y = increment * (130-average);
 
   var p = canvasContext.getImageData(0, y, 1, 1).data;
