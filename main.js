@@ -36,6 +36,7 @@ var meterHeight;
 var meterWidth;
 var meterElement;
 var gradient;
+var previousAverage = 0;
 
 $(function () {
 
@@ -53,8 +54,10 @@ $(function () {
       gradient = canvasContext.createLinearGradient(0,0,0,meterHeight);
 
       gradient.addColorStop(0,'#ff0000');
-      gradient.addColorStop(0.5,'#ffff00');
-      gradient.addColorStop(1,'#00ff00');
+      gradient.addColorStop(0.75, '#e74c3c');
+      gradient.addColorStop(0.5,'#f39c12');
+      gradient.addColorStop(0.25, '#f1c40f');
+      gradient.addColorStop(1,'#2ecc71');
 
       canvasContext.fillStyle = gradient;
       canvasContext.fillRect(0, 0, 1, 130);
@@ -73,8 +76,12 @@ $(function () {
             navigator.webkitGetUserMedia ||
             navigator.mozGetUserMedia;
 
-        // ask for an audio input
-        navigator.getUserMedia({audio: true}, gotStream, didntGetStream);
+        try {
+          navigator.getUserMedia({audio: true}, gotStream, didntGetStream);
+        }
+        catch (e) {
+          $("#unsupported, #header").toggle();
+        }
 
       } catch (e) {
         alert('getUserMedia threw exception :' + e);
@@ -134,17 +141,18 @@ function draw() {
   var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 
   if (y <= 0)
-    $("body").css("background-color", "red");
+    $("body").css(" background-color", "red");
   else if (hex != "#000000")
     $("body").css("background-color", hex);
 
   if (average > 80)
     $("#yes").html("Yes!").css("opacity", "1.0");
-  else if (average > 50)
+  else if (average > 50 && average > previousAverage)
     $("#yes").html("You might be").css("opacity", "1.0");
   else
     $("#yes").css("opacity", "0");
 
+  previousAverage = average;
 }
 
 function findPos(obj) {

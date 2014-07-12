@@ -4,13 +4,13 @@
     <title>Loud or Not</title>
     <style>
       body {
-          background-color: #00FF00;
+          background-color: #2ecc71;
           color: white;
-          -webkit-transition: background-color 200ms linear;
-          -moz-transition: background-color 200ms linear;
-          -o-transition: background-color 200ms linear;
-          -ms-transition: background-color 200ms linear;
-          transition: background-color 200ms linear;
+          -webkit-transition: background-color 100ms linear;
+          -moz-transition: background-color 100ms linear;
+          -o-transition: background-color 100ms linear;
+          -ms-transition: background-color 100ms linear;
+          transition: background-color 100ms linear;
       }
       
       #yes {
@@ -66,10 +66,15 @@
 
   <body style="height: 100%">
     <div style="height: 100%">
-      <h1>Are you a loud talker?
+      <h1 id="header">Are you too loud?
         <span id="yes">
           Yes!
         </span>
+      </h1>
+
+      <h1 id="unsupported" style="display:none">
+        Your browser doesn't seem to support microphone
+        input. <br/>Try the latest Google Chrome.
       </h1>
 
     </div>
